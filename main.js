@@ -88,39 +88,48 @@ document.getElementById("btnTinhTienDien").onclick = function () {
   var soKw = document.getElementById("soDien").value * 1;
   var soTienDienPhaiTra;
   function tinhMocTienDien(soKw) {
-    var moc1 = 500 * soKw;
-    var moc2 = 650 * soKw;
-    var moc3 = 850 * soKw;
-    var moc4 = 1100 * soKw;
-    var conLai = 1300 * soKw;
+    var moc1 = 500 ;
+    var moc2 = 650 ;
+    var moc3 = 850 ;
+    var moc4 = 1100 ;
+    var conLai = 1300 ;
+    // đk số kw> 0 nếu k báo lỗi bắt nhập lại
+   if(soKw<0){"nhập lại đi ba"}
     // mốc 1 nhân số kw với đơn giá
-    if (soKw <= 50) {
-      moc1;
-      return moc1;
-    //   mốc 2 khi quá 50 kw sẽ nhân số kw sau 50 với đơn giá 650 và + 50 kw đầu với đơn giá mốc 1
-    } else if (soKw > 50 && soKw <= 101) {
-      (soKw - 50) * 650 + (50 * 500) == moc2;
-      return moc2;
-      //   mốc 3 khi quá 101 kw sẽ nhân số kw sau 101 với đơn giá mốc  3 và + 50 kw đầu với đơn giá mốc 1 + 51 kw giá mốc 2
-    } else if (soKw > 101 && soKw <= 202) {
-      (soKw - 101) * 850 + (50 * 500) + (51 * 650) == moc3;
-      return moc3;
-    //   mốc 4 khi quá 202 kw thì sẽ nhân số kw sau 202 với đơn giá mốc 4 và + 3 mốc trước đó với đơn giá tương ứng
-    } else if (soKw > 202 && soKw <= 352) {
-       (soKw-202)*1100 +(50 * 500) +(51 * 650) +(101*850) == moc4;
-      return moc4;
-        //   mốc còn lại khi quá 352kw thì sẽ nhân số kw sau 352 với đơn giá mốc conlai và + 4 mốc trước đó với đơn giá tương ứng
-    } else {
-        (soKw-352)*1300+(50 * 500) +(51 * 650) +(101*850)+(150*1100)==conLai;
-      return conLai;
-    }
-  }
+   else if(
+     soKw<=50
+     ){
+      soTienDienPhaiTra=50*moc1;
+      return soTienDienPhaiTra
+     }   //   mốc 2 khi quá 50 kw sẽ nhân số kw sau 50 với đơn giá 650 và + 50 kw đầu với đơn giá mốc 1
+    
+     else if(soKw<=100){
+      soTienDienPhaiTra=50*moc1+((soKw-50)*moc2);
+      return soTienDienPhaiTra
+      //   mốc 3 khi quá 100 kw sẽ nhân số kw sau 101 với đơn giá mốc  3 và + 50 kw đầu với đơn giá mốc 1 + 51 kw giá mốc 2
+     }
+     else if(soKw<=200){
+      soTienDienPhaiTra=50*moc1+(50*moc2)+((soKw-100)*moc3);
+      return soTienDienPhaiTra
+    //   mốc 4 khi quá 200 kw thì sẽ nhân số kw sau 202 với đơn giá mốc 4 và + 3 mốc trước đó với đơn giá tương ứng
+     }
+     else if(soKw<=350){
+      soTienDienPhaiTra=50*moc1+(50*moc2)+(100*moc3)+((soKw-200)*moc4);
+      return soTienDienPhaiTra
+        //   mốc còn lại khi quá 350kw thì sẽ nhân số kw sau 352 với đơn giá mốc conlai và + 4 mốc trước đó với đơn giá tương ứng
+     }
+     else{soTienDienPhaiTra=50*moc1+(50*moc2)+(100*moc3)+(150*moc4)+(soKw-350)*conLai;
+      return soTienDienPhaiTra
+    }}
+ 
+    
+    
+
 
   currentFormat = new Intl.NumberFormat("vn-VN");
   var tienDien = tinhMocTienDien(soKw);
   var xuatBill = (document.getElementById("tinhTien").innerHTML = "<div>");
-  xuatBill += "<p>Đề nghị đồng chí:</p>" ;
-  xuatBill += ten;
+  xuatBill += "<p>Đề nghị đồng chí:" + ten +"</p>";
   xuatBill +=
     "phải nộp số tiền điện là: " +
     currentFormat.format(tienDien) +
