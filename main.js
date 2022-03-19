@@ -28,7 +28,7 @@ document.getElementById("btnTinhDiem").onclick = function () {
     } else if (khuVuc == "X") {
       uuTienKhuVuc = 0;
     } else {
-      ("hông có địa chỉ này nha");
+      alert("hông có địa chỉ này nha");
     }
     return uuTienKhuVuc;
   }
@@ -43,7 +43,7 @@ document.getElementById("btnTinhDiem").onclick = function () {
     } else if (doiTuong == 0) {
       diemUuTienDoiTuong = 0;
     } else {
-      ("Nhập đối tượng đàng hoàng zô");
+      alert("Nhập đối tượng đàng hoàng zô");
     }
     return diemUuTienDoiTuong;
   }
@@ -94,7 +94,7 @@ document.getElementById("btnTinhTienDien").onclick = function () {
     var moc4 = 1100 ;
     var conLai = 1300 ;
     // đk số kw> 0 nếu k báo lỗi bắt nhập lại
-   if(soKw<0){"nhập lại đi ba"}
+   if(soKw<0){alert("nhập lại đi ba")}
     // mốc 1 nhân số kw với đơn giá
    else if(
      soKw<=50
