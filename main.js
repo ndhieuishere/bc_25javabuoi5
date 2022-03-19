@@ -99,7 +99,7 @@ document.getElementById("btnTinhTienDien").onclick = function () {
    else if(
      soKw<=50
      ){
-      soTienDienPhaiTra=50*moc1;
+      soTienDienPhaiTra=soKw*moc1;
       return soTienDienPhaiTra
      }   //   mốc 2 khi quá 50 kw sẽ nhân số kw sau 50 với đơn giá 650 và + 50 kw đầu với đơn giá mốc 1
     
